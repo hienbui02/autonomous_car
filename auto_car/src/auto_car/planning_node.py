@@ -34,7 +34,7 @@ class PlanningNode(Node):
         timer_period_cmd_vel = 0.05
         self.timer_cmd_vel = self.create_timer(timer_period_cmd_vel, self.cmd_vel_pub_callback)
         
-        timer_period_planning = 0.05
+        timer_period_planning = 0.01
         self.time_planning = self.create_timer(timer_period_planning, self.planning_main)
         
         timer_period_show_info = 3
@@ -64,6 +64,7 @@ class PlanningNode(Node):
         self.angle = 0.0
         
     def planning_main(self):
+        
         if self.automatic:
             if not self.gps_status:
                 self.notice = 0
